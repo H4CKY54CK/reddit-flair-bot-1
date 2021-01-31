@@ -84,7 +84,7 @@ class FlairBot:
             if msg.author is None:
                 continue # Skip if the author is None
             author = str(msg.author)
-            valid_user = re.match(valid, author)
+            valid_user = re.fullmatch(valid, author)
             if msg.subject == subject and valid_user:
                 self.process_pm(msg, author, target_sub)
         sys.exit()
@@ -121,4 +121,6 @@ class FlairBot:
             log += ' @ ' + time_now + '\n'
             logfile.write(log)
 
-FlairBot()
+
+if __name__ == '__main__':
+    FlairBot()
